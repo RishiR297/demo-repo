@@ -1,26 +1,21 @@
-<div>Hello!</div>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
-    integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-<body>
-    <div class="table"></div>
-</body>
-<script>
-    let table = document.querySelector("table");
-    (
-        async()=> {
-            let workbook = XLSX.read(await(await fetch("./E xcel.xslx")).arrayBuffer());
-            console.log(workbook);
-        }
-    )()
-</script>
+    <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
+  </head>
+  <body>
+    <input type="file" id = "input"/>
+    <table class="tbl-data"></table>
+    <script>
+      var input = document.getElementById("input");
+      input.addEventListener("change", function () {
+        readXlsxFile(input.files[0]).then(function (data) {
+          console.log(data);
+        });
+      });
+    </script>
+  </body>
 </html>
